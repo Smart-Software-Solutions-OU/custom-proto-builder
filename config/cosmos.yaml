@@ -1,0 +1,80 @@
+# https://github.com/CosmosContracts/juno/blob/main/proto/buf.yaml
+#  - buf.build/cosmos/cosmos-sdk:v0.47.0
+#  - buf.build/cosmos/cosmos-proto:1935555c206d4afb9e94615dfd0fad31
+#  - buf.build/cosmos/ics23:b1abd8678aab07165efd453c96796a179eb3131f
+# https://github.com/cosmos/cosmos-rust/blob/main/proto-build/src/main.rs
+#   const COSMOS_SDK_REV: &str = "v0.46.15";
+#   const IBC_REV: &str = "v3.0.0";
+#   const WASMD_REV: &str = "v0.29.2";
+# https://github.com/osmosis-labs/osmosis-rust/blob/main/packages/proto-build/src/main.rs
+#   const COSMOS_SDK_REV: &str = "v0.47.5-osmo";
+#   const OSMOSIS_REV: &str = "v25.0.0";
+#   const WASMD_REV: &str = "v0.45.0-osmo";
+#   const COMETBFT_REV: &str = "v0.37.2";
+#   const IBC_GO_REV: &str = "v7.3.1";
+#   const ICS23_REV: &str = "rust/v0.10.0";
+protos:
+  - repository: "https://github.com/cometbft/cometbft"
+    tag: "v0.37.2"
+    proto_folder: "tendermint"
+    merge: false
+    modules:
+      - "abci"
+      - "crypto"
+      - "types"
+      - "rpc"
+    black_list: []
+    custom: {}
+  - repository: "https://github.com/cosmos/cosmos-sdk"
+    tag: "v0.47.5"
+    proto_folder: "cosmos"
+    merge: false
+    modules:
+      - "base"
+      - "bank"
+      - "crypto"
+      - "tx"
+      - "auth"
+      - "staking"
+    black_list: []
+    custom: {}
+  - repository: "https://github.com/cosmos/ics23"
+    tag: "rust/v0.10.0"
+    proto_folder: "cosmos"
+    merge: true
+    modules:
+      - "ics23"
+    black_list: []
+    custom: {}
+  - repository: "https://github.com/osmosis-labs/osmosis"
+    tag: "v25.0.0"
+    proto_folder: "osmosis"
+    merge: false
+    modules:
+      - "gamm"
+      - "poolmanager"
+      - "concentratedliquidity"
+      - "cosmwasmpool"
+      - "twap"
+      - "txfees"
+      - "tokenfactory"
+    #      - "superfluid"
+    black_list: []
+    custom: {}
+  - repository: "https://github.com/CosmWasm/wasmd"
+    tag: "v0.45.0"
+    proto_folder: "cosmwasm"
+    merge: false
+    modules:
+      - "wasm"
+    black_list: []
+    custom: {}
+  - repository: "https://github.com/cosmos/ibc-go"
+    tag: "v7.3.1"
+    proto_folder: "ibc"
+    merge: false
+    modules:
+      - "core"
+      - "applications"
+    black_list: []
+    custom: {}

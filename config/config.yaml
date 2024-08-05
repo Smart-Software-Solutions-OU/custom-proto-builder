@@ -1,0 +1,10 @@
+projects:
+  cosmos:
+    path: cosmos.yaml
+    target_dir: ["packages/cosmos", "src", "modules"]
+  price:
+    path: price.yaml
+    target_dir: ["packages/price", "src", "modules"]
+  store:
+    path: store.yaml
+    target_dir: ["packages/store", "src", "modules"]

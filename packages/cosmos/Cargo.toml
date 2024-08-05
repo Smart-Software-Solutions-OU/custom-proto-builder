@@ -1,0 +1,38 @@
+[package]
+name = "cosmos-proto"
+version = { workspace = true }
+edition = { workspace = true }
+rust-version = { workspace = true }
+
+[features]
+default = ["all"]
+all = ["tendermint", "cosmos", "cosmwasm", "ibc", "osmosis"]
+osmosis = ["tonic"]
+ibc = ["tonic"]
+cosmwasm = ["tonic", "cosmos"]
+cosmos = ["tonic", "tendermint"]
+tendermint = ["tonic"]
+
+[dependencies]
+prost = { workspace = true }
+prost-types = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_derive = { workspace = true }
+bytes = { workspace = true, features = ["serde"] }
+flex-error = { workspace = true }
+
+# Optional dependencies
+tonic = { workspace = true, optional = true, features = [
+    "transport",
+    "tls",
+    "tls-roots",
+    "tls-webpki-roots",
+    "gzip",
+    "zstd",
+    "codegen",
+    "prost",
+] }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["full"] }
+serde_json = { workspace = true }

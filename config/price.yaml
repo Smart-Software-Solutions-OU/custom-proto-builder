@@ -1,0 +1,10 @@
+protos:
+  - repository: "protos"
+    tag: ""
+    proto_folder: "price"
+    merge: false
+    modules:
+      - "price"
+    black_list: []
+    custom:
+      ".": "#[derive(serde_derive::Deserialize, serde_derive::Serialize)]"

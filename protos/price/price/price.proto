@@ -1,0 +1,19 @@
+syntax = "proto3";
+package price;
+
+service Price {
+  // Get retrieves Price information.
+  rpc Get(PriceIdentifier) returns (PriceItem);
+
+  // Watch streams Price updates from the inventory.
+  rpc Watch(PriceIdentifier) returns (stream PriceItem);
+}
+
+// ---------Price----------------
+message PriceItem {
+  PriceIdentifier identifier = 1;
+  PriceValue price = 2;
+}
+
+message PriceIdentifier { uint64 height = 1; }
+message PriceValue { float price = 1; }
